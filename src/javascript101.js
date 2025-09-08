@@ -5,12 +5,15 @@ function ex1() {
     */
     var cars = ["Saab", "Volvo", "BMW"];
     var newcars = cars;
-    var person = {firstName: "Yournal", lastName: "Drunk", age: 50};
+    var person = { firstName: "Yournal", lastName: "Drunk", age: 50 };
     var newperson = person;
     person.firstName = "Jun";
     cars[0] = "what";
-    
-    return "" // e.g., "YournalSaab"
+
+    let result = newperson.firstName + newcars[0];
+    console.log(result);
+    return result;
+    // return "" // e.g., "YournalSaab"
 
 }
 
@@ -32,8 +35,22 @@ function ex2() {
             console.log(true != true)
 
     */
+    let arr = [
+        5 + "34",
+        "Bob" - "bill",
+        5 - "4",
+        5 % 10,
+        true + true,
+        false - true,
+        5 >= 1,
+        "A" > "B",
+        "a" > "A",
+        true != true];
 
-    return "" // e.g., the result of the first two expressions is "534NaN"
+    let result = arr.join('');
+    console.log(result);
+    return result;
+    // return "" // e.g., the result of the first two expressions is "534NaN"
 
 }
 
@@ -45,7 +62,12 @@ function ex3(firstNumber, secondNumber) {
             - else return the string "NaN"
 
     */
-      
+    if (isNaN(firstNumber) || isNaN(secondNumber)) {
+        return "NaN"
+    } else {
+        return firstNumber + secondNumber
+    }
+
 }
 
 function ex4(persons) {
@@ -68,9 +90,12 @@ function ex4(persons) {
 
         (in this example, the function return 44)
     */
+    let result = false;
+    for (let p of persons) {
+        if (!result || p.age < result.age) result = p;
+    }
+    return result.age;
 
-    return ""
-   
 }
 
 function ex5(str) {
@@ -84,7 +109,11 @@ function ex5(str) {
 
     */
 
-    return ""
+    str = str.toLowerCase().replace(/ /g, '');
+    for (let i = 0; i < str.length / 2; i++) {
+        if (str[i] != str[str.length - 1 - i]) return false;
+    }
+    return true;
 
 }
 
@@ -107,23 +136,25 @@ function computeAverageScore(students) {
 
     */
     let result = 0
-   
-
-    return result
+    for (let s of students) {
+        result += s.score
+    }
+    result /= students.length;
+    return result;
 }
 
 function checkStatus(student) {
-/*
-    Complete checkStatus function so that it
-        - check the score of a given student
-        - return "Pass" if the score is >= 50; otherwise "Fail"
-
-    // data structure of a student (example)
-        const student = { name: "Alice", score: 65 }
-          
-        (in this example, the function return 'Pass')
-*/
-   
+    /*
+        Complete checkStatus function so that it
+            - check the score of a given student
+            - return "Pass" if the score is >= 50; otherwise "Fail"
+    
+        // data structure of a student (example)
+            const student = { name: "Alice", score: 65 }
+              
+            (in this example, the function return 'Pass')
+    */
+    return student.score >= 50 ? 'Pass' : 'Fail';
 }
 
 module.exports = { ex1, ex2, ex3, ex4, ex5, computeAverageScore, checkStatus }
